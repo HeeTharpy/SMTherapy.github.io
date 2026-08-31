@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="수원 인계동 SM테라피. 편안하고 프라이빗한 공간에서 프리미엄 힐링을 제공합니다.">
+  <meta property="og:title" content="SM테라피 | 수원 인계동 프리미엄 힐링">
+  <meta property="og:description" content="수원 인계동 SM테라피. 전화 또는 텔레그램으로 예약하세요.">
+  <meta property="og:image" content="assets/images/sm-hero.jpg">
+  <title>SM테라피 | 수원 인계동 프리미엄 힐링</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script defer src="firebase-config.js"></script>
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="SM테라피 홈">
+      <span class="brand-mark">SM</span>
+      <span class="brand-copy"><strong>SM테라피</strong><em>SM THERAPY</em></span>
+    </a>
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a href="#home">HOME</a><a href="#therapists">THERAPIST</a><a href="#course">COURSE</a><a href="#event">EVENT</a><a href="#location">LOCATION</a>
+    </nav>
+    <div class="header-actions">
+      <a class="mini-btn filled" href="tel:01038195884">전화예약</a>
+      <a class="mini-btn outline" href="https://t.me/sssssnaver" target="_blank" rel="noopener">텔레그램</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow">PREMIUM HEALING SPACE</p>
+        <h1>SM테라피</h1>
+        <h2>프라이빗한 공간, 깊은 휴식</h2>
+        <p class="hero-desc">도심 속 감각적인 공간에서 오롯이 나만을 위한 편안한 휴식을 경험하세요.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="https://t.me/sssssnaver" target="_blank" rel="noopener">텔레그램 예약</a>
+          <a class="btn secondary" href="tel:01038195884">전화 예약</a>
+        </div>
+        <div class="hero-facts" aria-label="매장 정보">
+          <div><small>LOCATION</small><strong>수원 인계동</strong><span>인계로108번길 39-4</span></div>
+          <div><small>OPEN</small><strong>10:00 — 05:00</strong><span>연중무휴 예약제</span></div>
+          <div><small>RESERVATION</small><strong>전화 · 텔레그램</strong><span>빠른 예약 문의</span></div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#therapists" aria-label="아래로 이동"><span></span>SCROLL</a>
+    </section>
+
+    <section id="therapists" class="section therapists-section">
+      <div class="section-head"><p>THERAPIST</p><h2>오늘의 관리사</h2><span>프로필을 선택하면 자세한 출근 정보와 예약 안내를 확인할 수 있습니다.</span></div>
+      <div id="therapistGrid" class="therapist-grid"></div>
+    </section>
+
+    <section id="course" class="section course-section">
+      <div class="section-head"><p>PREMIUM COURSE</p><h2>한 가지 코스에 집중합니다</h2><span>편안한 휴식에 필요한 흐름을 60분 안에 섬세하게 담았습니다.</span></div>
+      <div id="courseGrid" class="course-grid"></div>
+    </section>
+
+    <section id="event" class="section event-section">
+      <div class="section-head"><p>LIVE INFORMATION</p><h2>예약 및 출근 안내</h2></div>
+      <div id="eventGrid" class="event-grid"></div>
+    </section>
+
+    <section id="location" class="section location-section">
+      <div class="section-head"><p>LOCATION</p><h2>SM테라피 오시는 길</h2></div>
+      <div class="location-box">
+        <div class="location-copy">
+          <p class="eyebrow">SUWON · INGYE</p><h3>도심 가까이,<br>조용한 휴식 공간</h3>
+          <dl><div><dt>주소</dt><dd id="addressText">경기도 수원시 팔달구 인계동 인계로108번길 39-4</dd></div><div><dt>영업시간</dt><dd id="hoursText">10:00 ~ 05:00</dd></div><div><dt>예약전화</dt><dd id="phoneText">010-3819-5884</dd></div></dl>
+          <div class="location-actions"><a class="btn primary" href="tel:01038195884">전화로 문의</a><a class="btn secondary" href="https://t.me/sssssnaver" target="_blank" rel="noopener">텔레그램 문의</a></div>
+        </div>
+        <div class="map-visual"><span class="map-pin">●</span><div><small>SM THERAPY</small><strong>수원 인계동</strong><p>상세 위치는 예약 시 안내드립니다.</p></div></div>
+      </div>
+    </section>
+
+    <section class="reservation">
+      <p>RESERVATION</p><h2>오늘의 휴식, 지금 예약하세요</h2><span>전화 또는 텔레그램으로 빠르게 상담받을 수 있습니다.</span>
+      <div class="hero-buttons"><a class="btn primary" href="https://t.me/sssssnaver" target="_blank" rel="noopener">@sssssnaver</a><a class="btn secondary" href="tel:01038195884">010-3819-5884</a></div>
+    </section>
+  </main>
+
+  <div id="profileModal" class="modal" role="dialog" aria-modal="true"><div class="modal-box"><button id="closeModal" class="modal-close" aria-label="닫기">×</button><div id="modalContent"></div></div></div>
+  <footer class="footer"><strong>SM테라피</strong><p>수원시 팔달구 인계동 · 010-3819-5884 · 10:00 ~ 05:00</p><small>© 2026 SM THERAPY. All rights reserved.</small></footer>
+</body>
+</html>

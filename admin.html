@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SM테라피 관리자</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="login-box" id="loginBox">
+  <h1>SM테라피 관리자</h1>
+  <input id="id" placeholder="아이디">
+  <input id="pw" type="password" placeholder="비밀번호">
+  <button onclick="login()">로그인</button>
+</div>
+
+<div class="admin-wrap" id="adminWrap" style="display:none;">
+  <div class="admin-head">
+    <div>
+      <p>SM THERAPY ADMIN</p>
+      <h1>SM테라피 관리자</h1>
+    </div>
+    <button class="outline" onclick="previewHome()">홈페이지 확인</button>
+  </div>
+
+  <section class="card">
+    <h2>홈페이지 기본 정보</h2>
+    <div class="form-grid two">
+      <input id="sitePhone" placeholder="전화번호">
+      <input id="siteTelegram" placeholder="텔레그램 링크">
+      <input id="siteAddress" placeholder="주소">
+      <input id="siteHours" placeholder="운영시간">
+    </div>
+    <input id="siteHeroTitle" placeholder="메인 제목">
+    <input id="siteHeroSubTitle" placeholder="메인 부제목">
+    <textarea id="siteHeroDesc" placeholder="메인 설명"></textarea>
+    <label class="file-label">메인 사진 선택 <input id="siteHeroImageFile" type="file" accept="image/*"></label>
+    <div id="heroImagePreview" class="hero-image-preview">메인 사진 미리보기</div>
+    <button onclick="saveSite()">기본 정보 저장</button>
+  </section>
+
+  <section class="card">
+    <h2>관리사 추가 / 수정</h2>
+    <input type="hidden" id="managerId">
+    <div class="form-grid two">
+      <input id="managerName" placeholder="이름 예: 희서">
+      <input id="managerAge" placeholder="나이 예: 24세">
+      <input id="managerHeight" placeholder="키 예: 165cm">
+      <input id="managerBody" placeholder="스펙 예: 49kg / C컵">
+      <input id="managerWork" placeholder="출근시간 예: 14:00 ~ 00:00">
+      <input id="managerTelegram" placeholder="텔레그램 링크">
+    </div>
+    <textarea id="managerIntro" placeholder="소개글 예: 밝고 편안한 분위기로 정성껏 관리해드립니다."></textarea>
+    <input id="managerImage" placeholder="대표사진 경로 예: assets/profiles/hihi/main.jpg">
+    <label class="file-label">대표사진 선택 <input id="managerImageFile" type="file" accept="image/*" data-photo-index="0"></label>
+    <div id="imagePreview" class="image-preview">대표사진 미리보기</div>
+    <div class="extra-photo-box">
+      <p class="hint">추가사진은 선택사항입니다. 최대 4장까지 등록 가능합니다.</p>
+      <label class="file-label">추가사진 1 <input id="managerImageFile1" type="file" accept="image/*" data-photo-index="1"></label>
+      <label class="file-label">추가사진 2 <input id="managerImageFile2" type="file" accept="image/*" data-photo-index="2"></label>
+      <label class="file-label">추가사진 3 <input id="managerImageFile3" type="file" accept="image/*" data-photo-index="3"></label>
+      <label class="file-label">추가사진 4 <input id="managerImageFile4" type="file" accept="image/*" data-photo-index="4"></label>
+      <div id="photoGalleryPreview" class="photo-gallery-preview"></div>
+    </div>
+    <div class="button-row">
+      <button onclick="saveManager()">저장</button>
+      <button class="outline" onclick="clearForm()">비우기</button>
+      <button class="outline" onclick="loadDefaultManagers()">기본 관리사 복구</button>
+    </div>
+  </section>
+
+  <section class="card">
+  <div class="section-head">
+    <div>
+      <h2>등록된 관리사</h2>
+      <p class="hint">검색 후 수정/삭제할 수 있습니다.</p>
+    </div>
+    <input id="managerSearch" class="search-input" placeholder="관리사 이름 검색">
+  </div>
+
+  <div class="dashboard">
+    <div>
+      <strong id="totalManagers">0</strong>
+      <span>전체 관리사</span>
+    </div>
+
+    <div>
+      <strong id="todayManagers">0</strong>
+      <span>출근 등록</span>
+    </div>
+
+    <div>
+      <strong id="lastSaved">-</strong>
+      <span>마지막 저장</span>
+    </div>
+  </div>
+
+  <div id="managerList"></div>
+</section>
+
+  <section class="card">
+    <h2>이벤트 관리</h2>
+    <input id="eventTitle1" placeholder="이벤트 제목 1">
+    <textarea id="eventText1" placeholder="이벤트 내용 1"></textarea>
+    <input id="eventTitle2" placeholder="이벤트 제목 2">
+    <textarea id="eventText2" placeholder="이벤트 내용 2"></textarea>
+    <button onclick="saveEvents()">이벤트 저장</button>
+  </section>
+
+  <section class="card warning">
+    <h2>초기화</h2>
+    <p>관리자에서 저장한 내용만 삭제하고, 원래 data.js 기본값으로 되돌립니다. 사진이 IMAGE로 보이면 이 버튼을 누르세요.</p>
+    <button class="danger" onclick="resetAll()">저장 데이터 초기화</button>
+  </section>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
